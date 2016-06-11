@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+    <TextView android:id="@+id/section_selection_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/sections"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textSize="@dimen/heading_text_size"
+        android:layout_alignParentTop="true"/>
+
+    <ListView android:id="@+id/quiz_sections"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:choiceMode="multipleChoice" android:layout_above="@+id/start_button_bar"
+        android:layout_below="@+id/section_selection_title">
+    </ListView>
+
+    <LinearLayout android:id="@+id/start_button_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <Button android:id="@+id/review_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="startReview"
+            android:text="@string/button_review"/>
+        <Button android:id="@+id/start_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="startQuiz"
+            android:text="@string/button_start"/>
+    </LinearLayout>
+
+</RelativeLayout>

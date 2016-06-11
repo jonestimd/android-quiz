@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/quiz_question"
+        style="@style/QuizText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="end"
+        android:gravity="center"
+        android:hint="@string/empty_question"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textSize="@dimen/heading_text_size"
+        tools:context=".QuizActivity"/>
+
+    <io.github.jonestimd.android.quiz.view.QuestionImageView
+        android:id="@+id/question_graphic_view"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_above="@+id/multiple_choice_answer"
+        android:layout_below="@id/quiz_question"
+        android:clickable="false"
+        android:focusable="false"/>
+
+    <RadioGroup
+        android:id="@+id/multiple_choice_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/quiz_button_bar"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center">
+
+        <RadioButton
+            android:id="@+id/quiz_answer1"
+            style="@style/QuizText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding"
+            android:hint="@string/empty_answer"
+            android:paddingRight="@dimen/padding"/>
+
+        <RadioButton
+            android:id="@+id/quiz_answer2"
+            style="@style/QuizText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding"
+            android:hint="@string/empty_answer"
+            android:paddingRight="@dimen/padding"/>
+
+        <RadioButton
+            android:id="@+id/quiz_answer3"
+            style="@style/QuizText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding"
+            android:hint="@string/empty_answer"
+            android:paddingRight="@dimen/padding"/>
+
+        <RadioButton
+            android:id="@+id/quiz_answer4"
+            style="@style/QuizText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding"
+            android:hint="@string/empty_answer"
+            android:paddingRight="@dimen/padding"/>
+    </RadioGroup>
+
+    <io.github.jonestimd.android.quiz.view.CheckView
+        android:id="@+id/answer_feedback"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/quiz_button_bar"
+        android:layout_alignTop="@id/multiple_choice_answer"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:id="@+id/quiz_button_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true">
+
+        <Button
+            android:id="@+id/hint_button"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/hint" />
+
+        <Button
+            android:id="@+id/ok_button"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/ok" />
+
+    </LinearLayout>
+
+</RelativeLayout>

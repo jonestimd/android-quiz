@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView android:id="@+id/review_section_title"
+              android:layout_alignParentTop="true"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:hint="@string/sections"
+              android:gravity="center_horizontal"
+              android:textSize="@dimen/heading_text_size"/>
+
+    <ListView android:id="@android:id/list"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/review_section_title"
+              android:layout_above="@+id/review_navigation">
+    </ListView>
+
+    <LinearLayout android:id="@+id/review_navigation"
+                  android:orientation="horizontal"
+                  android:layout_alignParentBottom="true"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center_horizontal|bottom"
+                  android:gravity="center_horizontal">
+        <Button android:id="@+id/previous_button"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:text="@string/previous"
+                android:layout_weight="1"
+                android:onClick="previousGroup"/>
+        <Button android:id="@+id/next_button"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/next"
+                android:layout_weight="1"
+                android:onClick="nextGroup"/>
+    </LinearLayout>
+
+</RelativeLayout>
