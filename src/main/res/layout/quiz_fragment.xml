@@ -86,21 +86,24 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true">
+        android:layout_alignParentRight="true"
+        style="?android:buttonBarButtonStyle">
 
         <Button
             android:id="@+id/hint_button"
             android:layout_width="0px"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/hint" />
+            android:text="@string/hint"
+            style="?android:buttonBarButtonStyle"/>
 
         <Button
             android:id="@+id/ok_button"
             android:layout_width="0px"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/ok" />
+            android:text="@string/ok"
+            style="?android:buttonBarButtonStyle"/>
 
     </LinearLayout>
 

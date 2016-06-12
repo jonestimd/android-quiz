@@ -16,7 +16,6 @@
     <ListView android:id="@+id/quiz_sections"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:choiceMode="multipleChoice" android:layout_above="@+id/start_button_bar"
         android:layout_below="@+id/section_selection_title">
     </ListView>
@@ -25,20 +24,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        style="?android:buttonBarButtonStyle">
 
         <Button android:id="@+id/review_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="startReview"
-            android:text="@string/button_review"/>
+            android:text="@string/button_review"
+            style="?android:buttonBarButtonStyle"/>
         <Button android:id="@+id/start_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="startQuiz"
-            android:text="@string/button_start"/>
+            android:text="@string/button_start"
+            style="?android:buttonBarButtonStyle"/>
     </LinearLayout>
 
 </RelativeLayout>

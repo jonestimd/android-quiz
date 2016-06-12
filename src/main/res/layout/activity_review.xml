@@ -25,19 +25,22 @@
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center_horizontal|bottom"
-                  android:gravity="center_horizontal">
+                  android:gravity="center_horizontal"
+                  style="?android:buttonBarButtonStyle">
         <Button android:id="@+id/previous_button"
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:text="@string/previous"
                 android:layout_weight="1"
-                android:onClick="previousGroup"/>
+                android:onClick="previousGroup"
+                style="?android:buttonBarButtonStyle"/>
         <Button android:id="@+id/next_button"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/next"
                 android:layout_weight="1"
-                android:onClick="nextGroup"/>
+                android:onClick="nextGroup"
+                style="?android:buttonBarButtonStyle"/>
     </LinearLayout>
 
 </RelativeLayout>
