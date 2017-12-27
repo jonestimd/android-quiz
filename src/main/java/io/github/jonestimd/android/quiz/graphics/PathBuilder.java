@@ -3,13 +3,20 @@ package io.github.jonestimd.android.quiz.graphics;
 import android.graphics.Path;
 
 public class PathBuilder {
-//    private static final String LOG_TAG = "PathBuilder";
-    float lastX;
-    float lastY;
-    float lastCx;
-    float lastCy;
+    private float lastX;
+    private float lastY;
+    private float lastCx;
+    private float lastCy;
 
-    private Path path = new Path();
+    private final Path path;
+
+    public PathBuilder() {
+        this(new Path());
+    }
+
+    protected PathBuilder(Path path) {
+        this.path = path;
+    }
 
     public PathBuilder moveTo(float x, float y) {
         path.moveTo(setX(x), setY(y));
@@ -26,12 +33,12 @@ public class PathBuilder {
         return this;
     }
 
-    public PathBuilder hLineTo(float x) {
+    public PathBuilder horizontalLineTo(float x) {
         path.lineTo(setX(x), lastY);
         return this;
     }
 
-    public PathBuilder vLineTo(float y) {
+    public PathBuilder verticalLineTo(float y) {
         path.lineTo(lastX, setY(y));
         return this;
     }
@@ -90,57 +97,57 @@ public class PathBuilder {
         return path;
     }
 
-    float addX(float dx) {
+    private float addX(float dx) {
         lastX += dx;
         return dx;
     }
 
-    float addY(float dy) {
+    private float addY(float dy) {
         lastY += dy;
         return dy;
     }
 
-    float setX(float x) {
+    private float setX(float x) {
         return lastX = x;
     }
 
-    float setY(float y) {
+    private float setY(float y) {
         return lastY = y;
     }
 
-    float setCx(float cx) {
+    private float setCx(float cx) {
         return lastCx = cx;
     }
 
-    float setCy(float cy) {
+    private float setCy(float cy) {
         return lastCy = cy;
     }
 
-    float addCx(float dcx) {
+    private float addCx(float dcx) {
         lastCx = lastX + dcx;
         return dcx;
     }
 
-    float addCy(float dcy) {
+    private float addCy(float dcy) {
         lastCy = lastY + dcy;
         return dcy;
     }
 
-    float mirrorCx() {
+    private float mirrorCx() {
         return lastCx = 2 * lastX - lastCx;
     }
 
-    float mirrorCy() {
+    private float mirrorCy() {
         return lastCy = 2 * lastY - lastCy;
     }
 
-    float relativeMirrorCx() {
+    private float relativeMirrorCx() {
         float relativeCx = lastX - lastCx;
         lastCx = lastX + relativeCx;
         return relativeCx;
     }
 
-    float relativeMirrorCy() {
+    private float relativeMirrorCy() {
         float relativeCy = lastY - lastCy;
         lastCy = lastY + relativeCy;
         return relativeCy;

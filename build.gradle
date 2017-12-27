@@ -1,8 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-
-group = 'io.github.jonestimd.android'
-version = '1.0-SNAPSHOT'
+apply plugin: 'maven-publish'
 
 repositories {
     jcenter()
@@ -11,28 +8,39 @@ repositories {
 buildscript {
     repositories {
         jcenter()
+        mavenCentral()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.2'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
+        classpath 'com.android.tools.build:gradle:2.3.0'
+    }
+}
+
+gradle.projectsEvaluated {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xbootclasspath/a:" + System.properties.get("java.home") + "/lib/rt.jar"
     }
 }
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 25
+    buildToolsVersion "27.0.3"
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 23
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        vectorDrawables.useSupportLibrary true
     }
-//    buildTypes {
-//        release {
-//            minifyEnabled false
+    buildTypes {
+        release {
+            minifyEnabled true
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//        }
-//    }
+        }
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
@@ -42,9 +50,14 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-//    compile 'com.android.support:appcompat-v7:23.4.0'
+    testCompile 'com.google.truth:truth:0.37'
+    testCompile 'org.mockito:mockito-core:1.9.0'
+    androidTestCompile 'com.android.support:support-annotations:25.3.1'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test:rules:0.5'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:25.3.1'
 }
 
 //task javadocsJar(type: Jar) {
@@ -57,7 +70,15 @@ task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
 }
 
-artifacts {
-    archives sourcesJar
-//    archives javadocsJar
+publishing {
+    publications {
+        root(MavenPublication) {
+            groupId 'io.github.jonestimd.android'
+            artifactId 'android-quiz'
+            version '1.0-SNAPSHOT'
+
+            artifact(sourcesJar)
+            artifact("$buildDir/outputs/aar/android-quiz-debug.aar")
+        }
+    }
 }

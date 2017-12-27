@@ -5,7 +5,15 @@ import android.graphics.Paint.Align;
 import android.graphics.Paint.Style;
 
 public class PaintBuilder {
-    private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final Paint paint;
+
+    public PaintBuilder() {
+        this(new Paint(Paint.ANTI_ALIAS_FLAG));
+    }
+
+    protected PaintBuilder(Paint paint) {
+        this.paint = paint;
+    }
 
     public PaintBuilder style(Style style) {
         paint.setStyle(style);

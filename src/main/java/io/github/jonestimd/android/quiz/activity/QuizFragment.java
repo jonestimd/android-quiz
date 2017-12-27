@@ -15,6 +15,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.Button;
 import android.widget.Checkable;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -24,7 +25,6 @@ import java.util.List;
 
 import io.github.jonestimd.android.quiz.R;
 import io.github.jonestimd.android.quiz.animation.SineInterpolator;
-import io.github.jonestimd.android.quiz.view.CheckView;
 import io.github.jonestimd.android.quiz.view.QuestionImageView;
 
 public class QuizFragment extends Fragment {
@@ -47,7 +47,7 @@ public class QuizFragment extends Fragment {
     private Button hintButton;
     private int answerButtonId;
     private boolean answered = false;
-    private CheckView checkView;
+    private ImageView checkView;
     private Runnable nextQuestionRunner = new Runnable() {
         public void run() {
             nextQuestion();
@@ -123,7 +123,7 @@ public class QuizFragment extends Fragment {
         okButton.setOnClickListener(answerlistener);
         hintButton = (Button) view.findViewById(R.id.hint_button);
         hintButton.setOnClickListener(hintListener);
-        checkView = (CheckView) view.findViewById(R.id.answer_feedback);
+        checkView = (ImageView) view.findViewById(R.id.answer_feedback);
         return view;
     }
 
